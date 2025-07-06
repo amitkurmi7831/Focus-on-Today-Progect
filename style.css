@@ -114,8 +114,10 @@ h1{
 }
 .tik{
     color: rgba(255, 255, 255, 1);
+    display: none;
+
 }
-.complet{
+.Completed .checkboxs{
       background-color:rgba(72, 163, 0, 1) ;
     border: 1px solid rgba(72, 163, 0, 1);
 }
@@ -127,7 +129,7 @@ h1{
     color: rgba(0, 0, 0, 1);
 
 }
-.complet1{
+.Completed .in{
     color: rgba(72, 163, 0, 1);
     text-decoration: line-through;
     font-weight: 500;
@@ -148,6 +150,10 @@ h1{
     font-weight: 500;
     margin-top: 54px;
     color: rgba(0, 0, 0, 1);
+}
+.Completed .tik{
+        display: block;
+
 }
 .hart{
     text-align: center;
