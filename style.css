@@ -9,9 +9,10 @@ body{
 background-color: rgba(72, 163, 0, 0.07);
 display: flex;
 align-items: center;
+gap: 20px;
 /* justify-content: center; */
 flex-direction: column;
-font-family: Poppins;
+font-family: Poppins , serif;
     
 
 }
@@ -21,7 +22,7 @@ h1{
     
     color: hsba(38, 71%, 38%, 1);
     font-size: 64px;
-    font-weight: 700;
+    font-weight: 750;
     color: rgb(75, 51, 21);
 }
 .hifocus{
@@ -64,20 +65,36 @@ h1{
     background-color: rgba(72, 163, 0, 0.1);
     border-radius: 15px;
 }
+.alt{
+    display: none;
+}
+.arr{
+    display: block;
+
+}
 .grap .hi{
     
-    width: 33%;
+    width: 0;
     height: 100%;
     background-color:rgba(72, 163, 0, 1);
     border-radius: 15px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
-    font-size: 10px;
+    justify-items: center;
+    /* padding-left: 10px; */
+
+    /* padding-left: 20px; */
+    font-size: 12px;
     font-weight: 500;
     color: rgba(238, 255, 224, 1);
+    transition: width 0.3s ease-out;
+    overflow: hidden;
     
     
+}
+.grap .hi p{
+    padding: 30px;
+    min-width: max-content;
 }
 .alt{
     margin-top: 20px;
@@ -117,7 +134,7 @@ h1{
     display: none;
 
 }
-.Completed .checkboxs{
+.completed .checkboxs{
       background-color:rgba(72, 163, 0, 1) ;
     border: 1px solid rgba(72, 163, 0, 1);
 }
@@ -129,7 +146,7 @@ h1{
     color: rgba(0, 0, 0, 1);
 
 }
-.Completed .in{
+.completed .in{
     color: rgba(72, 163, 0, 1);
     text-decoration: line-through;
     font-weight: 500;
@@ -151,7 +168,7 @@ h1{
     margin-top: 54px;
     color: rgba(0, 0, 0, 1);
 }
-.Completed .tik{
+.completed .tik{
         display: block;
 
 }
@@ -161,4 +178,11 @@ h1{
     font-weight: 500;
     margin-top: 50px;
     color: rgba(0, 0, 0, 1);
+}
+.x{
+    width: 100%;
+    margin-top: 20px;
+    width: 20px;
+background-color: rgba(72, 163, 0, 0.07);
+    
 }
