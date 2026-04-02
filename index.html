@@ -1,634 +1,104 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Wedding - शुभ विवाह</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amit & Nandni | हमारी शादी की यादें</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #8B1E3F;
+      --gold: #D4AF37;
+      --cream: #FDF8F5;
+      --text: #2C2C2C;
+      --white: #FFFFFF;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-            color: #333;
-        }
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover; background-position: center;
+      min-height: 80vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      color: white; padding: 40px 20px;
+    }
+    .hero h1 { font-size: 3.2rem; margin-bottom: 10px; text-shadow: 2px 2px 6px rgba(0,0,0,0.6); }
+    .hero p { font-size: 1.3rem; margin-bottom: 15px; font-weight: 300; }
+    .badge { background: var(--gold); color: var(--primary); padding: 8px 18px; border-radius: 30px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+    .status-msg { background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); padding: 12px 24px; border-radius: 12px; font-size: 1.1rem; margin-top: 10px; }
 
-        /* Navigation */
-        nav {
-            background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    /* GALLERY */
+    .gallery { padding: 60px 20px; text-align: center; background: white; }
+    .gallery h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 30px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
+    .grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .grid img:hover { transform: scale(1.03); }
+    .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 500; margin-top: 25px; transition: 0.3s; }
+    .btn:hover { background: var(--gold); color: var(--primary); }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
+    /* DETAILS */
+    .details { padding: 60px 20px; text-align: center; }
+    .details h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 25px; }
+    .info-box { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); max-width: 700px; margin: 0 auto 20px; }
+    .map { width: 100%; height: 300px; border-radius: 15px; overflow: hidden; margin-top: 20px; }
+    .map iframe { width: 100%; height: 100%; border: 0; }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s;
-            border-radius: 5px;
-        }
+    /* FOOTER */
+    footer { background: var(--primary); color: white; text-align: center; padding: 30px 20px; margin-top: 40px; }
+    footer p { opacity: 0.9; }
 
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 60px;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .countdown {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .countdown-item {
-            background: rgba(255,255,255,0.2);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .countdown-item span {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-
-        /* Invitation Section - Hindi/Marathi */
-        .invitation {
-            padding: 5rem 2rem;
-            background: white;
-            text-align: center;
-        }
-
-        .invitation-card {
-            max-width: 800px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #fff9e6 0%, #fff 100%);
-            border: 3px solid #d4af37;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .invitation h2 {
-            font-family: 'Playfair Display', serif;
-            color: #c9a227;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .sanskrit-shlok {
-            font-size: 1.3rem;
-            color: #666;
-            margin: 2rem 0;
-            line-height: 2;
-            font-style: italic;
-        }
-
-        .hindi-text {
-            font-size: 1.2rem;
-            line-height: 2;
-            margin: 2rem 0;
-            color: #333;
-        }
-
-        .marathi-text {
-            font-size: 1.2rem;
-            line-height: 2;
-            margin: 2rem 0;
-            color: #333;
-            border-top: 2px solid #d4af37;
-            border-bottom: 2px solid #d4af37;
-            padding: 2rem 0;
-        }
-
-        .couple-names {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            color: #c9a227;
-            margin: 2rem 0;
-        }
-
-        /* Photo Gallery */
-        .gallery {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-        }
-
-        .gallery h2 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #c9a227;
-            margin-bottom: 3rem;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .photo-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-            height: 400px;
-        }
-
-        .photo-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            padding: 2rem 1rem 1rem;
-            font-size: 1.2rem;
-        }
-
-        /* Event Details */
-        .events {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .events h2 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #c9a227;
-            margin-bottom: 3rem;
-        }
-
-        .event-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .event-card {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff 100%);
-            border: 2px solid #d4af37;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .event-card h3 {
-            color: #c9a227;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .event-card .date {
-            font-size: 1.3rem;
-            color: #666;
-            margin: 1rem 0;
-        }
-
-        .event-card .time {
-            font-size: 1.1rem;
-            color: #333;
-            margin: 0.5rem 0;
-        }
-
-        /* Venue & Map Section */
-        .venue {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
-        }
-
-        .venue h2 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #c9a227;
-            margin-bottom: 3rem;
-        }
-
-        .venue-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .venue-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .venue-info h3 {
-            color: #c9a227;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .venue-info p {
-            margin: 1rem 0;
-            line-height: 1.8;
-        }
-
-        .venue-info .address {
-            background: #fff9e6;
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            border-left: 4px solid #d4af37;
-        }
-
-        .map-container {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            height: 400px;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* RSVP Section */
-        .rsvp {
-            padding: 5rem 2rem;
-            background: white;
-            text-align: center;
-        }
-
-        .rsvp h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #c9a227;
-            margin-bottom: 2rem;
-        }
-
-        .rsvp-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .rsvp-form input,
-        .rsvp-form select,
-        .rsvp-form textarea {
-            padding: 1rem;
-            border: 2px solid #d4af37;
-            border-radius: 10px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .rsvp-form button {
-            background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .rsvp-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #c9a227 0%, #d4af37 100%);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .countdown {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .venue-container {
-                grid-template-columns: 1fr;
-            }
-
-            .invitation-card {
-                padding: 2rem 1rem;
-            }
-
-            .couple-names {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Couple</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#events">Event Details</a></li>
-            <li><a href="#venue">Venue</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-        </ul>
-    </nav>
+  <section class="hero">
+    <div class="badge">शादी संपन्न 🎉</div>
+    <h1>Amit & Nandni</h1>
+    <p>हमारी शादी की खूबसूरत यादें और फोटो एल्बम</p>
+    <p class="status-msg">📅 05 फरवरी 2026 | 📍 भानपुरा, सिहोरा, जबलपुर</p>
+  </section>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>शुभ विवाह</h1>
-            <p>राहुल & प्रिया के विवाह समारोह में आपका स्वागत है</p>
-            <p>15th December 2026</p>
-            <div class="countdown">
-                <div class="countdown-item">
-                    <span id="days">00</span>
-                    <small>Days</small>
-                </div>
-                <div class="countdown-item">
-                    <span id="hours">00</span>
-                    <small>Hours</small>
-                </div>
-                <div class="countdown-item">
-                    <span id="minutes">00</span>
-                    <small>Minutes</small>
-                </div>
-                <div class="countdown-item">
-                    <span id="seconds">00</span>
-                    <small>Seconds</small>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="gallery">
+    <div class="container">
+      <h2>📸 फोटो गैलरी</h2>
+      <p style="margin-bottom: 25px; color: #555;">नीचे हमारी शादी की कुछ झलकियाँ हैं। सभी फोटोज़ देखने और डाउनलोड करने के लिए नीचे दिए गए बटन पर क्लिक करें।</p>
+      <div class="grid">
+        <!-- यहां अपनी फोटो लगाएं -->
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Wedding 1">
+        <img src="https://images.unsplash.com/photo-1595408076683-5d0c523c0389?auto=format&fit=crop&w=600&q=80" alt="Wedding 2">
+        <img src="https://images.unsplash.com/photo-1522673607200-1645062cd958?auto=format&fit=crop&w=600&q=80" alt="Wedding 3">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=600&q=80" alt="Wedding 4">
+      </div>
+      <a href="https://photos.google.com/share/YOUR_GOOGLE_PHOTOS_LINK" target="_blank" class="btn">📂 पूरा फोटो एल्बम देखें (Google Photos)</a>
+    </div>
+  </section>
 
-    <!-- Invitation Section - Hindi/Marathi -->
-    <section class="invitation" id="about">
-        <div class="invitation-card">
-            <h2>॥ श्री गणेशाय नमः ॥</h2>
-            
-            <div class="sanskrit-shlok">
-                विवाहोऽयं भवेद् धन्यः सर्वसम्पत्प्रदायकः<br>
-                कुलदीपप्रदश्चैव पुत्रपौत्रप्रदायकः
-            </div>
+  <section class="details">
+    <div class="container">
+      <h2>📍 कार्यक्रम स्थान</h2>
+      <div class="info-box">
+        <h3 style="color: var(--gold); margin-bottom: 10px;">भानपुरा, सिहोरा</h3>
+        <p>जबलपुर, मध्य प्रदेश</p>
+        <p style="margin-top: 10px; font-style: italic;">आपके प्यार और आशीर्वाद ने इस दिन को और भी खास बना दिया। 🙏</p>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=Bhanpura,+Sihora,+Jabalpur,+Madhya+Pradesh&output=embed" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
 
-            <div class="couple-names">राहुल ✕ प्रिया</div>
+  <footer>
+    <p>© 2026 Amit & Nandni | दो दिल, एक सफर, अनंत यादें ❤️</p>
+    <p style="margin-top: 8px; font-size: 0.9rem;">वेबसाइट बनाने में आपका धन्यवाद 🌸</p>
+  </footer>
 
-            <div class="hindi-text">
-                <p>सपरिवार सादर निमंत्रण</p>
-                <p>
-                    हमें यह बताते हुए अत्यंत हर्ष हो रहा है कि हमारे पुत्र<br>
-                    <strong>राहुल कुमार शर्मा</strong><br>
-                    का विवाह<br>
-                    <strong>प्रिया पटेल</strong><br>
-                    के साथ निश्चित हुआ है।
-                </p>
-                <p>
-                    इस शुभ अवसर पर आपकी उपस्थिति हमारे लिए गौरव की बात होगी।<br>
-                    कृपया पधारें और आशीर्वाद दें।
-                </p>
-            </div>
-
-            <div class="marathi-text">
-                <p><strong>मराठी निमंत्रण:</strong></p>
-                <p>
-                    सादर नमस्कार,<br><br>
-                    आमच्या सुपुत्राचा विवाह सुप्रियाशी ठरला आहे.<br>
-                    या शुभ प्रसंगी तुमची उपस्थिति आमच्यासाठी आनंदाची बाब असेल.<br>
-                    कृपया पधारून आशीर्वाद द्यावेत.
-                </p>
-                <p>
-                    <strong>विवाह सोहळा:</strong> १५ डिसेंबर २०२६<br>
-                    <strong>वेळ:</strong> सकाळी ११:०० वाजता<br>
-                    <strong>स्थळ:</strong> ग्रँड पॅलेस, मुंबई
-                </p>
-            </div>
-
-            <p style="margin-top: 2rem; font-size: 1.1rem;">
-                <strong>With Love & Blessings</strong><br>
-                Sharma Family & Patel Family
-            </p>
-        </div>
-    </section>
-
-    <!-- Photo Gallery -->
-    <section class="gallery" id="gallery">
-        <h2>💕 Our Journey Together 💕</h2>
-        <div class="photo-grid">
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600" alt="Couple Photo 1">
-                <div class="photo-overlay">First Meeting</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="Couple Photo 2">
-                <div class="photo-overlay">Engagement</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=600" alt="Couple Photo 3">
-                <div class="photo-overlay">Pre-Wedding</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b47ff42a4d?w=600" alt="Couple Photo 4">
-                <div class="photo-overlay">Mehendi Ceremony</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600" alt="Couple Photo 5">
-                <div class="photo-overlay">Sangeet Night</div>
-            </div>
-            <div class="photo-card">
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600" alt="Couple Photo 6">
-                <div class="photo-overlay">Together Forever</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Details -->
-    <section class="events" id="events">
-        <h2>🎉 Event Details 🎉</h2>
-        <div class="event-cards">
-            <div class="event-card">
-                <h3>हल्दी Ceremony</h3>
-                <div class="date">📅 13 December 2026</div>
-                <div class="time">⏰ 10:00 AM onwards</div>
-                <p>📍 Sharma Residence</p>
-                <p>Traditional Haldi ceremony with family and close friends</p>
-            </div>
-            
-            <div class="event-card">
-                <h3>मेहेंदी & संगीत</h3>
-                <div class="date">📅 14 December 2026</div>
-                <div class="time">⏰ 4:00 PM onwards</div>
-                <p>📍 Grand Palace, Mumbai</p>
-                <p>Mehendi application followed by Sangeet night with DJ & dance</p>
-            </div>
-            
-            <div class="event-card">
-                <h3>विवाह समारोह</h3>
-                <div class="date">📅 15 December 2026</div>
-                <div class="time">⏰ 11:00 AM onwards</div>
-                <p>📍 Grand Palace, Mumbai</p>
-                <p>Main Wedding Ceremony followed by Grand Reception & Dinner</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Venue & Map Section -->
-    <section class="venue" id="venue">
-        <h2>📍 Wedding Venue</h2>
-        <div class="venue-container">
-            <div class="venue-info">
-                <h3>Grand Palace Banquets</h3>
-                <div class="address">
-                    <strong>Address:</strong><br>
-                    123, Wedding Street, Near City Center<br>
-                    Andheri West, Mumbai - 400058<br>
-                    Maharashtra, India
-                </div>
-                <p><strong>📞 Contact:</strong> +91 98765 43210</p>
-                <p><strong>🏨 Accommodation:</strong> Special rates available at nearby hotels for outstation guests</p>
-                <p><strong>🚗 Parking:</strong> Ample parking space available</p>
-                
-                <div style="margin-top: 2rem;">
-                    <a href="https://maps.google.com" target="_blank" 
-                       style="display: inline-block; background: #d4af37; color: white; padding: 1rem 2rem; text-decoration: none; border-radius: 10px; font-weight: 600;">
-                        Get Directions 🗺️
-                    </a>
-                </div>
-            </div>
-            
-            <div class="map-container">
-                <!-- Google Maps Embed - Replace with your actual location -->
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.14571420178!2d72.71637482812498!3d19.08219783873944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <!-- RSVP Section -->
-    <section class="rsvp" id="rsvp">
-        <h2>✨ RSVP - Please Confirm Your Attendance ✨</h2>
-        <form class="rsvp-form" onsubmit="handleSubmit(event)">
-            <input type="text" placeholder="Your Full Name *" required>
-            <input type="email" placeholder="Email Address *" required>
-            <input type="tel" placeholder="Phone Number *" required>
-            <select required>
-                <option value="">Will you be attending? *</option>
-                <option value="yes">Joyfully Accept</option>
-                <option value="no">Regretfully Decline</option>
-            </select>
-            <input type="number" placeholder="Number of Guests" min="1" max="10">
-            <textarea rows="4" placeholder="Any dietary restrictions or special requirements?"></textarea>
-            <button type="submit">Submit RSVP</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p style="font-size: 1.5rem; margin-bottom: 1rem;">💑 राहुल & प्रिया 💑</p>
-        <p>15th December 2026</p>
-        <p style="margin-top: 1rem;">Made with ❤️ for our special day</p>
-    </footer>
-
-    <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const weddingDate = new Date('December 15, 2026 11:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            d
+</body>
+</html>
