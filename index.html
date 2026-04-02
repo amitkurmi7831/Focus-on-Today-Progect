@@ -1,76 +1,268 @@
-<!DOCTYPE html>
-<html lang="en">
+export default function WeddingWebsite() {
+  const wedding = {
+    groom: "Amit",
+    bride: "Nandini",
+    date: "05 February 2026",
+    year: "2026",
+    subtitle: "Hamari shaadi mein aapka hardik swagat hai",
+    quote:
+      "Do dil, do parivaar aur ek khoobsurat rishta. Aapki dua aur upasthiti hamare liye sabse bada aashirwad hogi.",
+    venue: "Wedding Venue",
+    city: "Madhya Pradesh",
+    phone: "+91 00000 00000",
+  };
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.Js" defer></script>
-    <title>Focus on Today</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-</head>
+  const events = [
+    {
+      title: "Haldi Function",
+      date: "03 February 2026",
+      time: "Subah se",
+      icon: "💛",
+      description: "Haldi ki rasam, hasi-khushi aur parivaar ke saath yaadon bhara din.",
+    },
+    {
+      title: "Mata Pujan",
+      date: "04 February 2026",
+      time: "Subah / Shaam",
+      icon: "🪔",
+      description: "Kuldevta aur mata pujan ke saath shubh aarambh.",
+    },
+    {
+      title: "Pancham",
+      date: "04 February 2026",
+      time: "Raat",
+      icon: "🎶",
+      description: "Riwaazon, geet-sangeet aur ghar ki khushiyon ka pyaara karyakram.",
+    },
+    {
+      title: "Shaadi Samaroh",
+      date: "05 February 2026",
+      time: "Shubh Vivaah",
+      icon: "❤️",
+      description: "Amit aur Nandini ke jeevan ka sabse khaas din.",
+    },
+  ];
 
-<body>
-    <div class="main1">
-    <h1><span class="hifocus">Focus on</span> Today</h1>
-<div class="main">
-        <div class="sun">
-            <h2>Today</h2>
-            <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M25.0012 15.6258C19.8349 15.6258 15.6258 19.8349 15.6258 25.0012C15.6258 30.1675 19.8349 34.3767 25.0012 34.3767C30.1675 34.3767 34.3767 30.1675 34.3767 25.0012C34.3767 19.8349 30.1675 15.6258 25.0012 15.6258ZM49.0649 23.4875L39.8164 18.8681L43.088 9.06294C43.5275 7.73475 42.2677 6.47492 40.9493 6.92416L31.1441 10.1958L26.515 0.937546C25.8899 -0.312515 24.1125 -0.312515 23.4875 0.937546L18.8681 10.186L9.05317 6.9144C7.72498 6.47492 6.46516 7.73475 6.9144 9.05317L10.186 18.8583L0.937546 23.4875C-0.312515 24.1125 -0.312515 25.8899 0.937546 26.515L10.186 31.1343L6.9144 40.9493C6.47492 42.2774 7.73475 43.5373 9.05317 43.088L18.8583 39.8164L23.4777 49.0649C24.1027 50.3149 25.8802 50.3149 26.5052 49.0649L31.1246 39.8164L40.9297 43.088C42.2579 43.5275 43.5177 42.2677 43.0685 40.9493L39.7969 31.1441L49.0453 26.5247C50.3149 25.8899 50.3149 24.1125 49.0649 23.4875ZM33.8395 33.8395C28.9662 38.7128 21.0362 38.7128 16.1629 33.8395C11.2896 28.9662 11.2896 21.0362 16.1629 16.1629C21.0362 11.2896 28.9662 11.2896 33.8395 16.1629C38.7128 21.0362 38.7128 28.9662 33.8395 33.8395Z"
-                    fill="#FED50D" />
-                <circle cx="20.0389" cy="21.3317" r="0.646416" fill="#61481C" />
-                <path
-                    d="M27.7958 27.7959C27.7958 28.4816 27.5234 29.1393 27.0385 29.6242C26.5536 30.1091 25.8959 30.3815 25.2102 30.3815C24.5244 30.3815 23.8667 30.1091 23.3818 29.6242C22.8969 29.1393 22.6245 28.4816 22.6245 27.7959L25.2102 27.7959H27.7958Z"
-                    fill="#61481C" />
-                <circle cx="29.7352" cy="21.3317" r="0.646416" fill="#61481C" />
-            </svg>
-        </div>
-        <div class="pera">
-            <p>Raise the bar by completing your goals!</p>
+  const gallery = [
+    {
+      src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
+      title: "Bride Portrait",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1200&auto=format&fit=crop",
+      title: "Wedding Style",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1200&auto=format&fit=crop",
+      title: "Couple Moment",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200&auto=format&fit=crop",
+      title: "Celebration",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200&auto=format&fit=crop",
+      title: "Special Day",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1200&auto=format&fit=crop",
+      title: "Golden Memories",
+    },
+  ];
 
-        </div>
-        <div class="grap">
-            <div class="hi">
-                <p>2/3 Completed</p>
+  const countdownDate = new Date("2026-02-05T19:00:00").getTime();
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+  const days = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24)));
+  const hours = Math.max(0, Math.floor((distance / (1000 * 60 * 60)) % 24));
+  const minutes = Math.max(0, Math.floor((distance / (1000 * 60)) % 60));
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-rose-50 via-white to-amber-50 text-slate-800">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(244,63,94,0.18),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(251,191,36,0.18),transparent_30%)]" />
+        <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-rose-200/40 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-amber-200/40 blur-3xl" />
+
+        <div className="relative mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <p className="inline-flex rounded-full bg-white/90 px-4 py-2 text-sm shadow-sm ring-1 ring-rose-100">
+                {wedding.subtitle}
+              </p>
+              <h1 className="mt-5 text-5xl font-semibold leading-tight md:text-7xl">
+                {wedding.groom}
+                <span className="mx-3 text-rose-500">&</span>
+                {wedding.bride}
+              </h1>
+              <p className="mt-4 text-xl font-medium text-rose-500">05 February 2026</p>
+              <p className="mt-5 max-w-xl text-lg leading-8 text-slate-600">
+                {wedding.quote}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#events"
+                  className="rounded-2xl bg-rose-500 px-6 py-3 font-medium text-white shadow-lg transition hover:-translate-y-0.5"
+                >
+                  Program Dekhein
+                </a>
+                <a
+                  href="#gallery"
+                  className="rounded-2xl bg-white px-6 py-3 font-medium shadow-lg ring-1 ring-slate-200 transition hover:-translate-y-0.5"
+                >
+                  Gallery Dekhein
+                </a>
+              </div>
+
+              <div className="mt-10 grid max-w-lg grid-cols-3 gap-4 text-center">
+                <div className="rounded-3xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+                  <div className="text-2xl font-semibold">{days}</div>
+                  <div className="text-sm text-slate-500">Days</div>
+                </div>
+                <div className="rounded-3xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+                  <div className="text-2xl font-semibold">{hours}</div>
+                  <div className="text-sm text-slate-500">Hours</div>
+                </div>
+                <div className="rounded-3xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+                  <div className="text-2xl font-semibold">{minutes}</div>
+                  <div className="text-sm text-slate-500">Minutes</div>
+                </div>
+              </div>
             </div>
 
-        </div>
-        <p class="alt" >Please set all the 3 goals!</p>
-        <div class="gol ">
-            <div class="checkboxs ">
-                <div class="tik"><img src="img/Vector 1.png" ></div>
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-[2rem] bg-white p-3 shadow-2xl ring-1 ring-rose-100">
+                <img
+                  src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1400&auto=format&fit=crop"
+                  alt="Wedding hero"
+                  className="h-[560px] w-full rounded-[1.6rem] object-cover"
+                />
+                <div className="absolute inset-x-8 bottom-8 rounded-3xl bg-white/90 p-4 shadow-lg backdrop-blur">
+                  <p className="text-sm text-slate-500">Amit weds Nandini</p>
+                  <p className="text-2xl font-semibold">Shubh Vivaah • 05 February 2026</p>
+                  <p className="mt-1 text-slate-600">Haldi • Mata Pujan • Pancham • Shaadi</p>
+                </div>
+              </div>
             </div>
-            <input id="frist" type="text" class="in " placeholder="Add new goal..." >
+          </div>
         </div>
-        <div class="gol">
-            <div class="checkboxs ">
-                <div class="tik"><img src="img/Vector 1.png" ></div>
+      </section>
 
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-8">
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 className="text-xl font-semibold">Pyaar ki Kahani</h3>
+            <p className="mt-3 leading-7 text-slate-600">
+              Rishton, bharose aur parivaar ke saath ek naye jeevan ki khoobsurat shuruaat.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 className="text-xl font-semibold">Aapka Swagat Hai</h3>
+            <p className="mt-3 leading-7 text-slate-600">
+              Aapki upasthiti aur aashirwad hamare liye sabse khaas uphaar hai.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
+            <h3 className="text-xl font-semibold">Yaadon ka Safar</h3>
+            <p className="mt-3 leading-7 text-slate-600">
+              Har rasam mein pyaar, hasi, dua aur parivaar ki mithaas basi rahegi.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" className="mx-auto max-w-6xl px-5 py-12 md:px-8">
+        <div className="mb-8 text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-rose-500">Wedding Schedule</p>
+          <h2 className="mt-2 text-4xl font-semibold">Hamare Shaadi Ke Program</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+            Haldi Function, Mata Pujan, Pancham aur 5 February 2026 ko shubh vivaah.
+          </p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {events.map((event) => (
+            <div
+              key={event.title}
+              className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-100 transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="mb-3 flex items-center justify-between">
+                <span className="inline-block rounded-full bg-rose-50 px-3 py-1 text-xs font-medium text-rose-600">
+                  {event.date}
+                </span>
+                <span className="text-2xl">{event.icon}</span>
+              </div>
+              <h3 className="text-2xl font-semibold">{event.title}</h3>
+              <p className="mt-3 font-medium text-slate-700">{event.time}</p>
+              <p className="mt-2 leading-7 text-slate-500">{event.description}</p>
             </div>
-            <input id="secand"  type="text" class="in " placeholder="Add new goal...">
+          ))}
         </div>
-        <div class="gol">
-            <div class="checkboxs ">
-                <div class="tik"><img  src="img/Vector 1.png" ></div>
+      </section>
 
+      <section id="gallery" className="mx-auto max-w-6xl px-5 py-12 md:px-8">
+        <div className="mb-8 text-center">
+          <p className="text-sm uppercase tracking-[0.3em] text-amber-500">Memories</p>
+          <h2 className="mt-2 text-4xl font-semibold">Wedding Gallery</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-slate-600">
+            Yahan aapki dulhan aur shaadi ki photos lagengi. Final version mein hum aapki asli photos replace kar denge.
+          </p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {gallery.map((item, index) => (
+            <div key={index} className="group overflow-hidden rounded-[2rem] bg-white p-2 shadow-md ring-1 ring-slate-100">
+              <img
+                src={item.src}
+                alt={item.title}
+                className="h-80 w-full rounded-[1.5rem] object-cover transition duration-300 group-hover:scale-[1.03]"
+              />
             </div>
-            <input id="thard"  type="text" class="in " placeholder="Add new goal...">
+          ))}
         </div>
-       
-        <p class="hot">“Move one step ahead, today!”</p>
-        <p class="hart">Made with  ❤️ by Amit Kumar Kurmi                   </p>
+      </section>
 
-</div>
+      <section className="mx-auto max-w-5xl px-5 py-12 md:px-8">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-[2rem] bg-white p-8 shadow-xl ring-1 ring-rose-100">
+            <p className="text-sm uppercase tracking-[0.3em] text-rose-500">Venue</p>
+            <h2 className="mt-2 text-3xl font-semibold">Shubh Sthaan</h2>
+            <p className="mt-4 leading-7 text-slate-600">
+              {wedding.venue}, {wedding.city}
+            </p>
+            <p className="mt-3 leading-7 text-slate-600">
+              Mehmaanon ke liye pyaar bhara swagat aur yaadgaar shaam ka intezam rahega.
+            </p>
+          </div>
 
+          <div className="rounded-[2rem] bg-gradient-to-r from-rose-500 to-amber-400 p-8 text-white shadow-2xl">
+            <p className="text-sm uppercase tracking-[0.3em] text-white/80">Blessings</p>
+            <h2 className="mt-2 text-3xl font-semibold">Aaiye Aur Khushi Mein Shaamil Ho</h2>
+            <p className="mt-4 text-lg leading-8 text-white/90">
+              Amit aur Nandini ke jeevan ke is khaas din par aap sabhi ka swagat hai.
+            </p>
+            <div className="mt-6 rounded-2xl bg-white/15 p-4 text-white/95">
+              Contact: {wedding.phone}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-12 md:px-8">
+        <div className="rounded-[2rem] bg-slate-900 p-8 text-white shadow-2xl md:p-10">
+          <div className="text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-rose-300">Special Message</p>
+            <h2 className="mt-2 text-4xl font-semibold">Amit ♥ Nandini</h2>
+            <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-white/80">
+              Aapki duaon ke saath hum apne naye jeevan ki shuruaat kar rahe hain. Kripya apni upasthiti se is din ko aur bhi yaadgaar banaiye.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="px-6 py-10 text-center text-slate-500">
+        Made with love for Amit & Nandini • 05 February 2026
+      </footer>
     </div>
-    
-
-</body>
-
-</html>
+  );
+}
+            
