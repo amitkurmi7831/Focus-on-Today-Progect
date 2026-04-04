@@ -1,105 +1,499 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amit & Nandni | हमारी शादी की यादें</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #8B1E3F;
-      --gold: #D4AF37;
-      --cream: #FDF8F5;
-      --text: #2C2C2C;
-      --white: #FFFFFF;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
-    h1, h2, h3 { font-family: 'Playfair Display', serif; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+import React, { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Heart, CalendarDays, MapPin, Camera, ChevronDown, Menu, X, Sparkles, Play, Image as ImageIcon, Stars } from "lucide-react";
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover; background-position: center;
-      min-height: 80vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      color: white; padding: 40px 20px;
-    }
-    .hero h1 { font-size: 3.2rem; margin-bottom: 10px; text-shadow: 2px 2px 6px rgba(0,0,0,0.6); }
-    .hero p { font-size: 1.3rem; margin-bottom: 15px; font-weight: 300; }
-    .badge { background: var(--gold); color: var(--primary); padding: 8px 18px; border-radius: 30px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
-    .status-msg { background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); padding: 12px 24px; border-radius: 12px; font-size: 1.1rem; margin-top: 10px; }
+const photos = [
+  {
+    src: "https://photos.app.goo.gl/uVzD3GhBH5oehyT56",
+    title: "Wedding Portrait",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1400&q=80",
+    title: "Couple Moment",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1400&q=80",
+    title: "Royal Pose",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1400&q=80",
+    title: "Celebration Shot",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1400&q=80",
+    title: "Wedding Details",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1525258946800-98cfd641d0de?auto=format&fit=crop&w=1400&q=80",
+    title: "Golden Frame",
+  },
+];
 
-    /* GALLERY */
-    .gallery { padding: 60px 20px; text-align: center; background: white; }
-    .gallery h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 30px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; max-width: 1000px; margin: 0 auto; }
-    .grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .grid img:hover { transform: scale(1.03); }
-    .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 500; margin-top: 25px; transition: 0.3s; }
-    .btn:hover { background: var(--gold); color: var(--primary); }
+const events = [
+  {
+    title: "Haldi Ceremony",
+    date: "04 February 2026",
+    time: "10:00 AM",
+    place: "Family Home",
+    desc: "Haldi, music, laughter aur golden celebration.",
+  },
+  {
+    title: "Mata Pujan",
+    date: "04 February 2026",
+    time: "05:00 PM",
+    place: "Home Mandap",
+    desc: "Parivar ke saath shubh rasam aur blessings.",
+  },
+  {
+    title: "Wedding",
+    date: "05 February 2026",
+    time: "07:00 PM",
+    place: "Wedding Venue",
+    desc: "Amit aur Nandini ke saath shaadi ka pyaara celebration.",
+  },
+];
 
-    /* DETAILS */
-    .details { padding: 60px 20px; text-align: center; }
-    .details h2 { font-size: 2.4rem; color: var(--primary); margin-bottom: 25px; }
-    .info-box { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); max-width: 700px; margin: 0 auto 20px; }
-    .map { width: 100%; height: 300px; border-radius: 15px; overflow: hidden; margin-top: 20px; }
-    .map iframe { width: 100%; height: 100%; border: 0; }
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
-    /* FOOTER */
-    footer { background: var(--primary); color: white; text-align: center; padding: 30px 20px; margin-top: 40px; }
-    footer p { opacity: 0.9; }
+function FloatingPetals() {
+  const petals = useMemo(
+    () =>
+      Array.from({ length: 16 }).map((_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        delay: Math.random() * 6,
+        duration: 10 + Math.random() * 10,
+        size: 10 + Math.random() * 14,
+      })),
+    []
+  );
 
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.4rem; }
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
-</head>
-<body>
-
-  <section class="hero">
-    <div class="badge">शादी संपन्न 🎉</div>
-    <h1>Amit & Nandni</h1>
-    <p>हमारी शादी की खूबसूरत यादें और फोटो एल्बम</p>
-    <p class="status-msg">📅 05 फरवरी 2026 | 📍 भानपुरा, सिहोरा, जबलपुर</p>
-  </section>
-
-  <section class="gallery">
-    <div class="container">
-      <h2>📸 फोटो गैलरी</h2>
-      <p style="margin-bottom: 25px; color: #555;">नीचे हमारी शादी की कुछ झलकियाँ हैं। सभी फोटोज़ देखने और डाउनलोड करने के लिए नीचे दिए गए बटन पर क्लिक करें।</p>
-      <div class="grid">
-        <!-- यहां अपनी फोटो लगाएं -->
-        <img src="https://photos.app.goo.gl/JqcV7g1L1U42ZSg19" alt="Wedding 1">
-        <img src="https://photos.app.goo.gl/JqcV7g1L1U42ZSg19" alt="Wedding 1">
-        <img src="https://photos.app.goo.gl/JqcV7g1L1U42ZSg19" alt="Wedding 1">
-        
-        
-      </div>
-      <a href="https://photos.app.goo.gl/CjQdTPh2cNXR48Gy7" target="_blank" class="btn">📂 पूरा फोटो एल्बम देखें (Google Photos)</a>
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {petals.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute top-[-10%] rounded-full bg-white/40 blur-[1px]"
+          style={{ left: p.left, width: p.size, height: p.size * 0.7 }}
+          animate={{ y: [0, 900], x: [0, 30, -20, 15], rotate: [0, 90, 180, 270] }}
+          transition={{ repeat: Infinity, duration: p.duration, delay: p.delay, ease: "linear" }}
+        />
+      ))}
     </div>
-  </section>
+  );
+}
 
-  <section class="details">
-    <div class="container">
-      <h2>📍 कार्यक्रम स्थान</h2>
-      <div class="info-box">
-        <h3 style="color: var(--gold); margin-bottom: 10px;">भानपुरा, सिहोरा</h3>
-        <p>जबलपुर, मध्य प्रदेश</p>
-        <p style="margin-top: 10px; font-style: italic;">आपके प्यार और आशीर्वाद ने इस दिन को और भी खास बना दिया। 🙏</p>
+function Navbar() {
+  const [open, setOpen] = useState(false);
+  const links = [
+    ["Home", "#home"],
+    ["Couple", "#couple"],
+    ["Story", "#story"],
+    ["Gallery", "#gallery"],
+    ["Events", "#events"],
+    ["Venue", "#venue"],
+  ];
+
+  return (
+    <>
+      <div className="fixed inset-x-0 top-0 z-50 mx-auto mt-3 w-[94%] max-w-6xl rounded-full border border-white/20 bg-white/70 px-4 py-3 shadow-xl backdrop-blur-md">
+        <div className="flex items-center justify-between">
+          <a href="#home" className="text-xl font-semibold tracking-wide text-stone-800">
+            Amit <span className="text-rose-500">&hearts;</span> Nandini
+          </a>
+          <div className="hidden items-center gap-6 md:flex">
+            {links.map(([label, href]) => (
+              <a key={label} href={href} className="text-sm font-medium text-stone-700 transition hover:text-rose-500">
+                {label}
+              </a>
+            ))}
+          </div>
+          <button
+            onClick={() => setOpen(!open)}
+            className="rounded-full bg-stone-900 p-2 text-white md:hidden"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
-      <div class="map">
-        <iframe src="https://www.google.com/maps?q=Bhanpura,+Sihora,+Jabalpur,+Madhya+Pradesh&output=embed" allowfullscreen loading="lazy"></iframe>
-      </div>
+
+      {open && (
+        <div className="fixed inset-x-4 top-20 z-40 rounded-3xl border border-white/20 bg-white/95 p-5 shadow-2xl md:hidden">
+          <div className="flex flex-col gap-4">
+            {links.map(([label, href]) => (
+              <a key={label} href={href} onClick={() => setOpen(false)} className="text-base font-medium text-stone-800">
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+function Countdown() {
+  const target = new Date("2026-02-05T19:00:00").getTime();
+  const [timeLeft, setTimeLeft] = useState(target - new Date().getTime());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTimeLeft(target - new Date().getTime()), 1000);
+    return () => clearInterval(timer);
+  }, [target]);
+
+  const safe = Math.max(0, timeLeft);
+  const days = Math.floor(safe / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((safe / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((safe / (1000 * 60)) % 60);
+  const secs = Math.floor((safe / 1000) % 60);
+
+  const items = [
+    [days, "Days"],
+    [hours, "Hours"],
+    [mins, "Minutes"],
+    [secs, "Seconds"],
+  ];
+
+  return (
+    <div className="grid w-full max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">
+      {items.map(([num, label]) => (
+        <motion.div
+          key={label}
+          whileHover={{ y: -4 }}
+          className="rounded-3xl border border-white/30 bg-white/20 p-4 text-center shadow-lg backdrop-blur-md"
+        >
+          <div className="text-3xl font-bold text-white sm:text-4xl">{String(num).padStart(2, "0")}</div>
+          <div className="mt-1 text-xs uppercase tracking-[0.25em] text-white/80">{label}</div>
+        </motion.div>
+      ))}
     </div>
-  </section>
+  );
+}
 
-  <footer>
-    <p>© 2026 Amit & Nandni | दो दिल, एक सफर, अनंत यादें ❤️</p>
-    <p style="margin-top: 8px; font-size: 0.9rem;">वेबसाइट बनाने में आपका धन्यवाद 🌸</p>
-  </footer>
+function AutoGalleryStrip() {
+  const looped = [...photos, ...photos];
+  return (
+    <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/60 p-3 shadow-xl backdrop-blur-md">
+      <motion.div
+        className="flex gap-3"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+      >
+        {looped.map((photo, idx) => (
+          <div key={`${photo.title}-${idx}`} className="h-24 w-36 shrink-0 overflow-hidden rounded-2xl sm:h-28 sm:w-44">
+            <img src={photo.src} alt={photo.title} className="h-full w-full object-cover" />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
 
-</body>
-</html>
+function Lightbox({ activeIndex, setActiveIndex }) {
+  if (activeIndex === null) return null;
+  const photo = photos[activeIndex];
+
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm" onClick={() => setActiveIndex(null)}>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="relative w-full max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img src={photo.src} alt={photo.title} className="max-h-[80vh] w-full object-cover" />
+        <div className="flex items-center justify-between gap-4 p-4">
+          <div>
+            <div className="text-sm uppercase tracking-[0.25em] text-rose-400">Wedding Gallery</div>
+            <div className="mt-1 text-2xl font-semibold text-stone-900">{photo.title}</div>
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setActiveIndex((activeIndex - 1 + photos.length) % photos.length)}
+              className="rounded-full bg-stone-900 px-4 py-2 text-sm font-semibold text-white"
+            >
+              Prev
+            </button>
+            <button
+              onClick={() => setActiveIndex((activeIndex + 1) % photos.length)}
+              className="rounded-full bg-rose-500 px-4 py-2 text-sm font-semibold text-white"
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+export default function AnimatedWeddingWebsite() {
+  const [activeIndex, setActiveIndex] = useState(null);
+  return (
+    <div className="min-h-screen scroll-smooth bg-[#f8f2ef] text-stone-800">
+      <Navbar />
+
+      <section
+        id="home"
+        className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-[#3d2024] via-[#9f5f67] to-[#f2c7be] px-6 pt-24"
+      >
+        <FloatingPetals />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18),transparent_40%)]" />
+        <motion.div
+          animate={{ scale: [1, 1.04, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 opacity-20"
+        >
+          <img src={photos[0].src} alt="Wedding background" className="h-full w-full object-cover" />
+        </motion.div>
+        <div className="absolute inset-0 bg-black/25" />
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ duration: 0.9 }}
+          className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-8 text-center"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="rounded-full border border-white/30 bg-white/15 px-5 py-2 text-sm tracking-[0.3em] text-white/90 backdrop-blur-md"
+          >
+            LATEST ANIMATED WEDDING INVITATION
+          </motion.div>
+
+          <div className="space-y-4">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="font-serif text-5xl leading-tight text-white drop-shadow-2xl sm:text-7xl md:text-8xl"
+            >
+              Amit <span className="inline-block px-2 text-rose-200">&amp;</span> Nandini
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.8 }}
+              className="mx-auto max-w-2xl text-base text-white/90 sm:text-lg"
+            >
+              Latest premium style, smooth animation, photo gallery, event timeline aur mobile friendly luxury wedding website.
+            </motion.p>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.8 }}
+            className="flex flex-wrap items-center justify-center gap-3 text-white"
+          >
+            <span className="rounded-full border border-white/30 bg-white/15 px-4 py-2 backdrop-blur-md">05 February 2026</span>
+            <span className="rounded-full border border-white/30 bg-white/15 px-4 py-2 backdrop-blur-md">Wedding Photo Gallery Included</span>
+          </motion.div>
+
+          <Countdown />
+          <AutoGalleryStrip />
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <motion.a
+              href="#gallery"
+              whileHover={{ scale: 1.04 }}
+              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-stone-900 shadow-xl"
+            >
+              <ImageIcon size={18} /> Open Gallery
+            </motion.a>
+            <motion.a
+              href="#events"
+              whileHover={{ scale: 1.04 }}
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur-md"
+            >
+              <Play size={18} /> View Events
+            </motion.a>
+          </div>
+
+          <motion.a
+            href="#couple"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 1.8 }}
+            className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/15 px-5 py-3 text-sm font-semibold text-white shadow-xl backdrop-blur-md"
+          >
+            Explore Invitation <ChevronDown size={18} />
+          </motion.a>
+        </motion.div>
+      </section>
+
+      <section id="couple" className="px-6 py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
+          {[
+            {
+              name: "Amit Kumar",
+              role: "The Groom",
+              img: photos[0],
+              text: "Calm heart, warm smile, aur family values ke saath nayi journey shuru karne wale groom.",
+            },
+            {
+              name: "Nandini",
+              role: "The Bride",
+              img: photos[1],
+              text: "Grace, beauty aur happiness ka perfect combination, jo har moment ko special bana de.",
+            },
+          ].map((person, index) => (
+            <motion.div
+              key={person.role}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
+            >
+              <div className="h-80 overflow-hidden">
+                <img src={person.img} alt={person.name} className="h-full w-full object-cover transition duration-700 hover:scale-110" />
+              </div>
+              <div className="p-8">
+                <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-rose-50 px-4 py-2 text-sm text-rose-500">
+                  <Heart size={16} /> {person.role}
+                </div>
+                <h2 className="text-3xl font-semibold">{person.name}</h2>
+                <p className="mt-4 leading-7 text-stone-600">{person.text}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <section id="story" className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mx-auto max-w-3xl text-center"
+          >
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-rose-50 px-4 py-2 text-sm text-rose-500">
+              <Sparkles size={16} /> Our Story
+            </div>
+            <h2 className="text-4xl font-semibold sm:text-5xl">A love story written with family blessings</h2>
+            <p className="mt-6 text-lg leading-8 text-stone-600">
+              Har rishta ek dua se shuru hota hai. Yeh website humari wedding invitation hi nahi, balki yaadon ka ek digital album bhi hai — jahan har section mein celebration, emotions aur family ka pyaar dikhega.
+            </p>
+          </motion.div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              ["First Meeting", "Beautiful beginning aur pehli special smile."],
+              ["Family Blessings", "Dono parivaron ki khushi aur pyaar ke saath rishta pakka hua."],
+              ["Forever Starts", "Ab shaadi ke saath ek nayi journey shuru hogi."],
+            ].map(([title, text], i) => (
+              <motion.div
+                key={title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="rounded-[2rem] border border-stone-100 bg-[#fcf8f6] p-8 shadow-sm"
+              >
+                <div className="mb-4 text-sm uppercase tracking-[0.25em] text-rose-400">0{i + 1}</div>
+                <h3 className="text-2xl font-semibold">{title}</h3>
+                <p className="mt-3 leading-7 text-stone-600">{text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" className="px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
+          >
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-rose-50 px-4 py-2 text-sm text-rose-500">
+                <Camera size={16} /> Wedding Photo Gallery
+              </div>
+              <h2 className="text-4xl font-semibold sm:text-5xl">Latest animated gallery section</h2>
+            </div>
+            <p className="max-w-xl text-stone-600">Yahan tum apni wedding photos direct replace kar sakte ho. Click karne par full screen preview open hoga.</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {photos.map((photo, i) => (
+              <motion.button
+                type="button"
+                key={photo.src}
+                onClick={() => setActiveIndex(i)}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                whileHover={{ y: -8 }}
+                className={`${i === 0 || i === 3 ? "lg:col-span-2" : ""} group relative h-72 overflow-hidden rounded-[2rem] bg-white text-left shadow-lg`}
+              >
+                <img src={photo.src} alt={photo.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-90" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                  <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-[0.2em] backdrop-blur-md">
+                    <Stars size={14} /> Photo {i + 1}
+                  </div>
+                  <div className="text-xl font-semibold">{photo.title}</div>
+                </div>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="events" className="bg-white px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mb-12 text-center"
+          >
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-rose-50 px-4 py-2 text-sm text-rose-500">
+              <CalendarDays size={16} /> Wedding Events
+            </div>
+            <h2 className="text-4xl font-semibold sm:text-5xl">Celebrate with us</h2>
+          </motion.div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {events.map((event, i) => (
+              <motion.div
+                key={event.title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="rounded-[2rem] bg-[#fcf8f6] p-8 shadow-[0_18px_50px_rgba(0,0,0,0.06)]"
+              >
+                <div className="mb-4 text-sm uppercase tracking-[0.25em] text-rose-400">Event {i + 1}</div>
+                <h3 className="text-2xl font-semibold">{event.title}</h3>
+                <p className="mt-4 text-stone-600">{event.date}</p>
+                <p className="text-stone-600">{event.time}</p>
+                <p className="mt-2 font-medium text-stone-800">{event.place}</p>
+                <p className="mt-4 leading-7 text-stone-600">{event.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="venue" className="px-6 py-20">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr,0.9fr]">
+          <motion.div
